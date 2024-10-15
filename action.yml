@@ -13,6 +13,5 @@ runs:
   steps:
     - run: . determina_ambiente.sh
       shell: bash
-      working-directory: $GITHUB_WORKSPACE
       env:
         GITHUB_REF: ${{ inputs.github_ref }}
