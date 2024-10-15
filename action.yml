@@ -1,5 +1,5 @@
 name: 'Determine Ambiente Baseado na Branch'
-description: Selectiona o ambiente a ser usado e seus segredos conforme a branch que foi commitada
+description: Seleciona o ambiente a ser usado e seus segredos conforme a branch que foi commitada
 author: Victor Borges Silva
 branding:
   icon: 'aperture'
@@ -8,7 +8,6 @@ inputs:
   github_ref:
     description: 'Branch reference (GITHUB_REF)'
     required: true
-    default: '${{ github.ref }}'
 runs:
   using: 'composite'
   steps:
