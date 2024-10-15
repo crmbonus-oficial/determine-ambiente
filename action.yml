@@ -11,6 +11,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - run: chmod +x determina_ambiente.sh
     - run: ./determina_ambiente.sh
       shell: bash
       env:
