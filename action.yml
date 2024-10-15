@@ -11,9 +11,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: chmod +x determina_ambiente.sh
+    - run: chmod +x ./scripts/determina_ambiente.sh
       shell: bash
-    - run: ./determina_ambiente.sh
+    - run: ./scripts/determina_ambiente.sh
       shell: bash
       working-directory: $GITHUB_WORKSPACE
       env:
