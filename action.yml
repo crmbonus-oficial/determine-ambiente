@@ -28,15 +28,19 @@ runs:
         if [[ "${GITHUB_REF}" == "refs/heads/${{ inputs.main_branch }}" ]]; then
           echo "ambiente=prd" >> $GITHUB_ENV
           echo "::set-output name=ambiente::prd"
+           echo "Selected environment: prd"
         elif [[ "${GITHUB_REF}" == "refs/heads/${{ inputs.hml_branch }}" ]]; then
           echo "ambiente=hml" >> $GITHUB_ENV
           echo "::set-output name=ambiente::hml"
+           echo "Selected environment: hml"
         elif [[ "${GITHUB_REF}" == "refs/heads/${{ inputs.dev_branch }}" ]]; then
           echo "ambiente=dev" >> $GITHUB_ENV
           echo "::set-output name=ambiente::dev"
+           echo "Selected environment: dev"
         else
           echo "ambiente=hml" >> $GITHUB_ENV
           echo "::set-output name=ambiente::hml"
+          echo "Selected environment: hml"
         fi
 
 outputs:
