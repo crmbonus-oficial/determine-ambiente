@@ -5,7 +5,7 @@ branding:
   icon: "check-square"    # Nome do ícone do Feather Icons
   color: "blue"           # Cor da action no Marketplace
 inputs:
-  main_branch:
+  prd_branch:
     description: 'Nome da branch para o ambiente de Produção'
     required: true
     default: 'main'
@@ -46,5 +46,5 @@ runs:
         GITHUB_REF: ${{ github.ref }}
 
 outputs:
-  ambiente:
+  seleciona-ambiente:
     description: 'Determina o environment baseado na branch commitada'
