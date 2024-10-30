@@ -8,25 +8,23 @@ inputs:
   main_branch:
     description: 'Nome da branch para o ambiente de Produção'
     required: true
-    #default: 'main'
+    default: 'main'
   hml_branch:
     description: 'Nome da branch para o ambiente de Homologação'
     required: true
-    #default: 'hml'
+    default: 'hml'
   dev_branch:
     description: 'Nome da branch para o ambiente de Desenvolvimento'
     required: true
-    #default: 'dev'
-outputs:
-  ambiente:
-    description: 'Determina o environment baseado na branch commitada'
+    default: 'dev'
+
 runs:
   using: "composite"
   steps:
     - name: Configura environment baseado na branch
       shell: bash
       run: |
-        echo "Determining environment based on branch: ${GITHUB_REF}"
+        echo "Determianndo environment baseado na branch: ${GITHUB_REF}"
         if [[ "${GITHUB_REF}" == "refs/heads/${{ inputs.main_branch }}" ]]; then
           echo "ambiente=prd" >> $GITHUB_ENV
           echo "::set-output name=ambiente::prd"
@@ -40,3 +38,7 @@ runs:
           echo "ambiente=hml" >> $GITHUB_ENV
           echo "::set-output name=ambiente::hml"
         fi
+
+outputs:
+  ambiente:
+    description: 'Determina o environment baseado na branch commitada'
