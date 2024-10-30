@@ -1,5 +1,9 @@
 name: Determine Environment
 description: Determina o environment a ser usado baseado na branch
+author: Victor Borges Silva
+branding:
+  icon: "check-square"    # Nome do ícone do Feather Icons
+  color: "blue"           # Cor da action no Marketplace
 inputs:
   main_branch:
     description: 'Nome da branch para o ambiente de Produção'
