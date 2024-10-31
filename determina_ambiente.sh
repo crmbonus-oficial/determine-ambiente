@@ -4,22 +4,18 @@ set -e
 echo "Determining environment based on branch: ${GITHUB_REF}"
 if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
     echo "ambiente=prd" >> $GITHUB_ENV
-    echo "::set-output name=ambiente::prd"
+    echo "ambiente=prd" >> $GITHUB_OUTPUT
     echo "Selected environment: prd"
 elif [[ "${GITHUB_REF}" == "refs/heads/hml" ]]; then
     echo "ambiente=hml" >> $GITHUB_ENV
-    echo "::set-output name=ambiente::hml"
+    echo "ambiente=hml" >> $GITHUB_OUTPUT
     echo "Selected environment: hml"
 elif [[ "${GITHUB_REF}" == "refs/heads/dev" ]]; then
     echo "ambiente=dev" >> $GITHUB_ENV
-    echo "::set-output name=ambiente::dev"
+    echo "ambiente=dev" >> $GITHUB_OUTPUT
     echo "Selected environment: dev"
-elif [[ "${GITHUB_REF}" == "refs/heads/CHD-13060MelhorarPipelineHML" ]]; then
-    echo "ambiente=hml-teste" >> $GITHUB_ENV
-    echo "::set-output name=ambiente::hml-teste"
-    echo "Selected environment: hml-teste"
 else
     echo "ambiente=hml" >> $GITHUB_ENV
-    echo "::set-output name=ambiente::hml"
+    echo "ambiente=hml" >> $GITHUB_OUTPUT
     echo "Selected environment: hml"
 fi
