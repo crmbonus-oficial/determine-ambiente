@@ -75,10 +75,3 @@ jobs:
 
       - name: Exibir Ambiente Selecionado
         run: echo "Ambiente selecionado: ${{ steps.set-environment.outputs.seleciona-ambiente }}"
-
-Autor
-Victor Borges Silva
-
-Licença
-Este projeto está licenciado sob a GNU General Public License v3.0. Veja o arquivo LICENSE para mais detalhes.
-
