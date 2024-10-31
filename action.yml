@@ -1,17 +1,40 @@
-name: 'Determine Ambiente Baseado na Branch'
-description: Seleciona o ambiente a ser usado e seus segredos conforme a branch que foi commitada
+name: Determine Environment
+description: Determina o environment a ser usado baseado na branch
 author: Victor Borges Silva
 branding:
-  icon: 'aperture'
-  color: 'blue'
+  icon: "check-square"
+  color: "blue"
 inputs:
-  github_ref:
-    description: 'Branch reference (GITHUB_REF)'
+  prd_branch:
+    description: 'Nome da branch para o ambiente de Produção'
     required: true
+    default: 'main'
+  hml_branch:
+    description: 'Nome da branch para o ambiente de Homologação'
+    required: true
+    default: 'hml'
+  dev_branch:
+    description: 'Nome da branch para o ambiente de Desenvolvimento'
+    required: true
+    default: 'dev'
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - run: . determina_ambiente.sh
+    - name: Configura environment baseado na branch
+      id: set-environment
       shell: bash
-      env:
-        GITHUB_REF: ${{ inputs.github_ref }}
+      run: |
+        echo "Determianndo environment baseado na branch: ${GITHUB_REF}"
+        if [[ "${GITHUB_REF}" == "refs/heads/${{ inputs.main_branch }}" ]]; then
+          echo "::set-output name=seleciona-ambiente::prd"
+        elif [[ "${GITHUB_REF}" == "refs/heads/${{ inputs.hml_branch }}" ]]; then
+          echo "::set-output name=seleciona-ambiente::hml"
+        elif [[ "${GITHUB_REF}" == "refs/heads/${{ inputs.dev_branch }}" ]]; then
+          echo "::set-output name=seleciona-ambiente::dev"
+        else
+          echo "::set-output name=seleciona-ambiente::hml"
+        fi
+outputs:
+  seleciona-ambiente:
+    description: 'Determina o environment baseado na branch commitada'
+    value: ${{ steps.set-environment.outputs.seleciona-ambiente }}  

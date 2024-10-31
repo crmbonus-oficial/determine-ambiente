@@ -1,7 +1,6 @@
 #!/bin/bash
-set -e
 
-echo "Determining environment based on branch: ${GITHUB_REF}"
+echo "Determinando environment baseado na branch: ${GITHUB_REF}"
 if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
     echo "ambiente=prd" >> $GITHUB_ENV
     echo "ambiente=prd" >> $GITHUB_OUTPUT
