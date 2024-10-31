@@ -10,11 +10,38 @@ A ação lê a branch atual e define o ambiente correspondente:
 - `dev` -> Desenvolvimento (`dev`)
 - Qualquer outra branch -> Homologação (`hml`)
 
+## Inputs
+- `prd_branch`: Nome da branch para o ambiente de Produção (`default: main`)
+- `hml_branch`: Nome da branch para o ambiente de Homologação (`default: hml`)
+- `dev_branch`: Nome da branch para o ambiente de Desenvolvimento (`default: dev`)
+
+## Outputs
+    seleciona-ambiente: O ambiente determinado baseado na branch commitada.
+
+## Exemplos de Saída
+
+- Branch main
+Determinando environment baseado na branch: refs/heads/main
+Selected environment: prd
+
+- Branch hml
+Determinando environment baseado na branch: refs/heads/hml
+Selected environment: hml
+
+- Branch dev
+Determinando environment baseado na branch: refs/heads/dev
+Selected environment: dev
+
+- Outra Branch
+Determinando environment baseado na branch: refs/heads/feature-branch
+Selected environment: hml
+
 ## Uso
 
 Para usar esta ação em seu workflow, adicione o seguinte passo ao seu arquivo de workflow:
 
 ```yaml
+
 name: CI
 
 on:
@@ -44,15 +71,6 @@ jobs:
         run: echo "Ambiente selecionado: ${{ steps.set-environment.outputs.seleciona-ambiente }}"
 
 
-
-
-Inputs
-    prd_branch: Nome da branch para o ambiente de Produção (default: main)
-    hml_branch: Nome da branch para o ambiente de Homologação (default: hml)
-    dev_branch: Nome da branch para o ambiente de Desenvolvimento (default: dev)
-
-Outputs
-    seleciona-ambiente: O ambiente determinado baseado na branch commitada.
 
 Exemplo de Uso
 
@@ -84,23 +102,7 @@ jobs:
       - name: Exibir Ambiente Selecionado
         run: echo "Ambiente selecionado: ${{ steps.set-environment.outputs.seleciona-ambiente }}"
 
-Exemplos de Saída
 
-Branch main
-Determinando environment baseado na branch: refs/heads/main
-Selected environment: prd
-
-Branch hml
-Determinando environment baseado na branch: refs/heads/hml
-Selected environment: hml
-
-Branch dev
-Determinando environment baseado na branch: refs/heads/dev
-Selected environment: dev
-
-Outra Branch
-Determinando environment baseado na branch: refs/heads/feature-branch
-Selected environment: hml
 
 Autor
 Victor Borges Silva
