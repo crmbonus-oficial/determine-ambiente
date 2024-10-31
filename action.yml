@@ -26,13 +26,13 @@ runs:
       run: |
         echo "Determianndo environment baseado na branch: ${GITHUB_REF}"
         if [[ "${GITHUB_REF}" == "refs/heads/${{ inputs.main_branch }}" ]]; then
-          echo "::set-output name=seleciona-ambiente::prd"
+          echo "seleciona-ambiente=prd" >> $GITHUB_OUTPUT
         elif [[ "${GITHUB_REF}" == "refs/heads/${{ inputs.hml_branch }}" ]]; then
-          echo "::set-output name=seleciona-ambiente::hml"
+          echo "seleciona-ambiente=hml" >> $GITHUB_OUTPUT
         elif [[ "${GITHUB_REF}" == "refs/heads/${{ inputs.dev_branch }}" ]]; then
-          echo "::set-output name=seleciona-ambiente::dev"
+          echo "seleciona-ambiente=dev" >> $GITHUB_OUTPUT
         else
-          echo "::set-output name=seleciona-ambiente::hml"
+          echo "seleciona-ambiente=hml" >> $GITHUB_OUTPUT
         fi
 outputs:
   seleciona-ambiente:
